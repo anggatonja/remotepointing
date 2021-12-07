@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "241887367465",
+    "firebase_url": "https://antenaiot-default-rtdb.firebaseio.com",
+    "project_id": "antenaiot",
+    "storage_bucket": "antenaiot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241887367465:android:fbbc1d3bab2353954da738",
+        "android_client_info": {
+          "package_name": "com.example.projekta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241887367465-ukrvrji2l4dgi2eknb4ihft40le548vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbccMAXa69E3YDT-gLGt5JVE7kssChkzY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241887367465-ukrvrji2l4dgi2eknb4ihft40le548vj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

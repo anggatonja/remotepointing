@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Test apk</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="bts_nearby">BTS Nearby</string>
+    <string name="pointing">Pointing</string>
+    <string name="connect">Connect</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="pointing_device">Pointing Remote</string>
+    <string name="status">Client :</string>
+    <string name="status1">BTS :</string>
+    <string name="statusdevice">Perangkat Terhubung :</string>
+    <string name="statusname">On</string>
+    <string name="statusnamee">On</string>
+    <string name="reset">Reset</string>
+    <string name="title_activity_btsnearby">Map</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main_activity2aa">MainActivity2aa</string>
+    <string name="derajath">Derajat Horizontal Client : </string>
+    <string name="derajatv">Derajat Vertical Client : </string>
+    <string name="derajathh">Derajat Horizontal BTS : </string>
+    <string name="derajatvv">Derajat Vertical BTS : </string>
+    <string name="nilaiderajatv"> 0 </string>
+    <string name="nilaiderajath"> 0 </string>
+    <string name="nilaiderajatvv"> 0 </string>
+    <string name="nilaiderajathh"> 0 </string>
+</resources>
