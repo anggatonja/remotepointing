@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -42,7 +44,9 @@ public class Pointing extends AppCompatActivity {
     private int derajatV;
     private int derajatHH;
     private int derajatVV;
-
+    private String waktuBts = "1";
+    private String waktuClient = "1";
+    private Handler handler = new Handler();
 
     Integer x = 1;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -97,29 +101,59 @@ public class Pointing extends AppCompatActivity {
         });
     }
 
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int wBts = Integer.parseInt(waktuBts)+1;
+            waktuBts = String.valueOf(wBts);
+            int wClient = Integer.parseInt(waktuClient)+1;
+            waktuClient = String.valueOf(wClient);
+            cekDevices();
+            cekDevicesbts();
+            handler.postDelayed(this, 2000);
+        }
+    };
+
     private void cekDevices(){
-        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext()));;
+
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/DetikClient");
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String detikBts = snapshot.child("DetikBts").getValue(String.class);
-                String detikClient = snapshot.child("DetikClient").getValue(String.class);
-                String currentTime = new SimpleDateFormat("ss", Locale.getDefault()).format(new Date());
-
-                if (detikBts.equals(currentTime)){
-                    statusDevices.setText("ON");
+                String detikClient = snapshot.getValue(String.class);
+                Log.i("Detik","Firebase "+detikClient);
+                Log.i("Detik","Detik "+waktuClient);
+                if (detikClient.equals(waktuClient)){
                     statusDevices.setTextColor(Color.GREEN);
+                    waktuClient = detikClient;
+                }else{
+                    statusDevices.setTextColor(Color.LTGRAY);
+                    waktuClient = detikClient;
                 }
-                if (detikClient.equals(currentTime)){
-                    statusDevicess.setText("ON");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void cekDevicesbts(){
+
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/DetikBts");
+        databaseakun.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String detikBts = snapshot.getValue(String.class);
+
+                if (detikBts.equals(waktuBts)){
                     statusDevicess.setTextColor(Color.GREEN);
+                    waktuBts = detikBts;
                 }
-                if(x == 1){
-                    statusDevices.setText("OFF");
-                    statusDevices.setTextColor(Color.RED);
-                    statusDevicess.setText("OFF");
-                    statusDevicess.setTextColor(Color.RED);
-                    x=0;
+                else{
+                    statusDevicess.setTextColor(Color.LTGRAY);
+                    waktuBts = detikBts;
                 }
             }
 
@@ -160,13 +194,15 @@ public class Pointing extends AppCompatActivity {
         BTSNearby = findViewById(R.id.btsterdekat);
         Pengaturan = findViewById(R.id.pengaturan);
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        statusDevices = findViewById(R.id.status_device);
-        statusDevicess = findViewById(R.id.status_devicee);
+        statusDevices = findViewById(R.id.status);
+        statusDevicess = findViewById(R.id.statusbts);
         tv_DerajatH = findViewById(R.id.nilaiderajath);
         tv_DerajatV = findViewById(R.id.nilaiderajatv);
         tv_DerajatHH = findViewById(R.id.nilaiderajath1);
         tv_DerajatVV = findViewById(R.id.nilaiderajatv1);
-        cekDevices();
+        handler.postDelayed(runnable, 0);
+//        cekDevices();
+//        cekDevicesbts();
         cekDataDerajat();
         cekDataDerajatt();
         Log.i("derajath", String.valueOf(derajatH));

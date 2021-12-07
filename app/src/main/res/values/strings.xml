@@ -7,8 +7,8 @@
     <string name="connect">Connect</string>
     <string name="pengaturan">Pengaturan</string>
     <string name="pointing_device">Pointing Remote</string>
-    <string name="status">Client :</string>
-    <string name="status1">BTS :</string>
+    <string name="status">Client</string>
+    <string name="status1">BTS</string>
     <string name="statusdevice">Perangkat Terhubung :</string>
     <string name="statusname">On</string>
     <string name="statusnamee">On</string>

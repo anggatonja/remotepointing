@@ -83,7 +83,8 @@
         android:text="@string/status"
         android:textColor="@color/lightgrey"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/pengaturan"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
@@ -95,32 +96,10 @@
         android:text="@string/status1"
         android:textColor="@color/lightgrey"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/pengaturan"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <TextView
-        android:id="@+id/status_device"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="OFF"
-        android:textColor="@color/green"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/status"
-        app:layout_constraintTop_toTopOf="@+id/status" />
-
-    <TextView
-        android:id="@+id/status_devicee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/statusnamee"
-        android:textColor="@color/green"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/statusbts"
-        app:layout_constraintEnd_toStartOf="@+id/pengaturan"
-        app:layout_constraintStart_toStartOf="@+id/statusbts"
-        app:layout_constraintTop_toTopOf="@+id/statusbts" />
 
     <Button
         android:id="@+id/buttonpengaturan"

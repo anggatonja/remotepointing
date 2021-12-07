@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,21 +36,64 @@ public class Pengaturan extends AppCompatActivity {
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
+    private String waktuBts = "1";
+    private String waktuClient = "1";
     Integer x = 1;
+    private Handler handler = new Handler();
+
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            int wBts = Integer.parseInt(waktuBts)+1;
+            waktuBts = String.valueOf(wBts);
+            int wClient = Integer.parseInt(waktuClient)+1;
+            waktuClient = String.valueOf(wClient);
+            cekDevices();
+            cekDevicesbts();
+            handler.postDelayed(this, 2000);
+        }
+    };
 
     private void cekDevices(){
-        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext()));
+
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/DetikClient");
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String detik = snapshot.child("DetikBts").getValue(String.class);
-                Log.i("detik",detik);
-                statusDevices.setText("ON");
-                statusDevices.setTextColor(Color.GREEN);
-                if(x == 1){
-                    statusDevices.setText("OFF");
-                    statusDevices.setTextColor(Color.RED);
-                    x=0;
+                String detikClient = snapshot.getValue(String.class);
+                Log.i("Detik","Firebase "+detikClient);
+                Log.i("Detik","Detik "+waktuClient);
+                if (detikClient.equals(waktuClient)){
+                    statusDevices.setTextColor(Color.GREEN);
+                    waktuClient = detikClient;
+                }else{
+                    statusDevices.setTextColor(Color.LTGRAY);
+                    waktuClient = detikClient;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void cekDevicesbts(){
+
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/DetikBts");
+        databaseakun.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String detikBts = snapshot.getValue(String.class);
+
+                if (detikBts.equals(waktuBts)){
+                    statusDevicess.setTextColor(Color.GREEN);
+                    waktuBts = detikBts;
+                }
+                else{
+                    statusDevicess.setTextColor(Color.LTGRAY);
+                    waktuBts = detikBts;
                 }
             }
 
@@ -97,12 +141,11 @@ public class Pengaturan extends AppCompatActivity {
         Button pengaturanwifi = (Button) findViewById(R.id.buttonpengaturan);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         key = "Device/"+Preference.getLoggedInUser(getBaseContext());
-        statusDevices = findViewById(R.id.status_device);
-        statusDevicess = findViewById(R.id.status_devicee);
-        TextView namadevices = (TextView) findViewById(R.id.status_device);
-        TextView namadevicess = (TextView) findViewById(R.id.status_devicee);
-        namadevices.setText(Preference.getLoggedInUser(getBaseContext()));
-        cekDevices();
+        statusDevices = findViewById(R.id.status);
+        statusDevicess = findViewById(R.id.statusbts);
+        handler.postDelayed(runnable, 0);
+//        cekDevices();
+//        cekDevicesbts();
 
 
 
