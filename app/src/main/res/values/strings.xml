@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test apk</string>
+    <string name="app_name">Remote Pointing</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="bts_nearby">BTS Nearby</string>
@@ -24,12 +24,18 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_main_activity2aa">MainActivity2aa</string>
-    <string name="derajath">Derajat Horizontal Client : </string>
-    <string name="derajatv">Derajat Vertical Client : </string>
-    <string name="derajathh">Derajat Horizontal BTS : </string>
-    <string name="derajatvv">Derajat Vertical BTS : </string>
+    <string name="derajath">Horizontal Client : </string>
+    <string name="derajatv">Vertical Client : </string>
+    <string name="derajathh">Horizontal BTS : </string>
+    <string name="derajatvv">Vertical BTS : </string>
     <string name="nilaiderajatv"> 0 </string>
     <string name="nilaiderajath"> 0 </string>
     <string name="nilaiderajatvv"> 0 </string>
     <string name="nilaiderajathh"> 0 </string>
+
+    <string name="alclient">Altitude : </string>
+    <string name="albts">Altitude : </string>
+
+    <string name="loginuser">Device Name </string>
+    <string name="passworduser">Password </string>
 </resources>

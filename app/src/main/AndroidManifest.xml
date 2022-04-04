@@ -14,8 +14,10 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjekTA">
@@ -45,7 +47,7 @@
             android:exported="true"
             android:theme="@style/Theme.ProjekTA.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".splash"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.ProjekTA.NoActionBar">
@@ -55,6 +57,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ProjekTA.NoActionBar"
+            />
     </application>
 
 </manifest>

@@ -1,13 +1,10 @@
 package com.example.projekta;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -20,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,22 +27,13 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.net.NetworkInterface;
-import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
 
@@ -70,9 +59,9 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            int wBts = Integer.parseInt(waktuBts)+1;
+            int wBts = Integer.parseInt(waktuBts) + 1;
             waktuBts = String.valueOf(wBts);
-            int wClient = Integer.parseInt(waktuClient)+1;
+            int wClient = Integer.parseInt(waktuClient) + 1;
             waktuClient = String.valueOf(wClient);
             cekDevices();
             cekDevicesbts();
@@ -80,19 +69,19 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
         }
     };
 
-    private void cekDevices(){
+    private void cekDevices() {
 
-        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/DetikClient");
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/" + Preference.getLoggedInUser(getBaseContext()) + "/DetikClient");
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String detikClient = snapshot.getValue(String.class);
-                Log.i("Detik","Firebase "+detikClient);
-                Log.i("Detik","Detik "+waktuClient);
-                if (detikClient.equals(waktuClient)){
+                Log.i("Detik", "Firebase " + detikClient);
+                Log.i("Detik", "Detik " + waktuClient);
+                if (detikClient.equals(waktuClient)) {
                     statusDevices.setTextColor(Color.GREEN);
                     waktuClient = detikClient;
-                }else{
+                } else {
                     statusDevices.setTextColor(Color.LTGRAY);
                     waktuClient = detikClient;
                 }
@@ -105,19 +94,18 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
         });
     }
 
-    private void cekDevicesbts(){
+    private void cekDevicesbts() {
 
-        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/DetikBts");
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/" + Preference.getLoggedInUser(getBaseContext()) + "/DetikBts");
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String detikBts = snapshot.getValue(String.class);
 
-                if (detikBts.equals(waktuBts)){
+                if (detikBts.equals(waktuBts)) {
                     statusDevicess.setTextColor(Color.GREEN);
                     waktuBts = detikBts;
-                }
-                else{
+                } else {
                     statusDevicess.setTextColor(Color.LTGRAY);
                     waktuBts = detikBts;
                 }
@@ -130,13 +118,12 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
         });
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btsnearby);
-
-
+        LocationRequest mLocationRequest = LocationRequest.create();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -187,6 +174,8 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -199,6 +188,7 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
         }
 
         mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setCompassEnabled(true);
 
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -206,17 +196,18 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
-                            myLatLng = new LatLng(location.getLatitude(),location.getLongitude());
+                            myLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                            Log.i("Lokasi gps", String.valueOf(myLatLng));
                         }
                     }
                 });
 
-        DatabaseReference databaseakun = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/GPS/Client/");
+        DatabaseReference databaseakun = database.getInstance().getReference("Device/" + Preference.getLoggedInUser(getBaseContext()) + "/GPS/Client/");
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child("Latitude").exists() && snapshot.child("Longitude").exists()) {
-                    LatLngClient = new LatLng(snapshot.child("Latitude").getValue(Double.class),snapshot.child("Longitude").getValue(Double.class));
+                    LatLngClient = new LatLng(snapshot.child("Latitude").getValue(Double.class), snapshot.child("Longitude").getValue(Double.class));
                     createMarker();
 
                 }
@@ -229,12 +220,12 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
 
         });
 
-        DatabaseReference databaseakunn = database.getInstance().getReference("Device/"+Preference.getLoggedInUser(getBaseContext())+"/GPS/BTS/");
+        DatabaseReference databaseakunn = database.getInstance().getReference("Device/" + Preference.getLoggedInUser(getBaseContext()) + "/GPS/BTS/");
         databaseakunn.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child("Latitude").exists() && snapshot.child("Longitude").exists()) {
-                    LatLngBts = new LatLng(snapshot.child("Latitude").getValue(Double.class),snapshot.child("Longitude").getValue(Double.class));
+                    LatLngBts = new LatLng(snapshot.child("Latitude").getValue(Double.class), snapshot.child("Longitude").getValue(Double.class));
                     createMarker();
                 }
             }
@@ -258,31 +249,44 @@ public class BTSNearby extends FragmentActivity implements OnMapReadyCallback {
                     }
                 });
     }
-    private void createMarker(){
+
+    private void createMarker() {
         mMap.clear();
 
-        if (LatLngClient != null){
-            mMap.addMarker(new MarkerOptions()
-                    .position(LatLngClient)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-                    .title("Client"));
+        try {
+            if (LatLngClient != null) {
+                mMap.addMarker(new MarkerOptions()
+                        .position(LatLngClient)
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
+                        .title("Client"));
+            }
+
+            if (LatLngBts != null) {
+                mMap.addMarker(new MarkerOptions()
+                        .position(LatLngBts)
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
+                        .title("BTS"));
+            }
+            if (LatLngBts != null && LatLngClient != null) {
+                if (LatLngBts.latitude > LatLngClient.latitude) {
+                    LatLngBounds bounds = new LatLngBounds(LatLngClient, LatLngBts);
+                    mMap.addPolyline((new PolylineOptions()).add(LatLngBts, LatLngClient).width(5)
+                            .color(Color.RED)
+                            .geodesic(true));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 200));
+                } else {
+                    LatLngBounds bounds = new LatLngBounds(LatLngBts, LatLngClient);
+                    mMap.addPolyline((new PolylineOptions()).add(LatLngBts, LatLngClient).width(5)
+                            .color(Color.RED)
+                            .geodesic(true));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 200));
+                }
+
+            }
+        }catch (Exception e){
+            Toast.makeText(this, String.valueOf(e), Toast.LENGTH_SHORT).show();
         }
 
-        if (LatLngBts != null){
-            mMap.addMarker(new MarkerOptions()
-                    .position(LatLngBts)
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))
-                    .title("BTS"));
-        }
-        if (LatLngBts != null && LatLngClient != null ){
-            LatLngBounds bounds = new LatLngBounds(LatLngBts, LatLngClient);
-            mMap.addPolyline((new PolylineOptions()).add(LatLngBts, LatLngClient).width(5)
-                    .color(Color.RED)
-                    .geodesic(true));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds,200));
-        }else{
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLatLng,15));
-        }
 
     }
 }

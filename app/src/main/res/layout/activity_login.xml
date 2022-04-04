@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -12,8 +13,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        app:cardBackgroundColor="@color/teal_700"
-        />
+        app:cardBackgroundColor="@color/blue" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -21,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_title"
         android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_marginTop="60dp"
+        android:layout_marginRight="30dp"
         android:background="#fff"
         android:elevation="5dp"
         android:orientation="vertical"
@@ -40,16 +40,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="70dp"
-                app:startIconDrawable="@drawable/remote"
                 android:layout_marginBottom="5dp"
-                android:hint="Device Name">
-
+                android:drawablePadding="5dp"
+                android:hint="@string/loginuser"
+                app:startIconDrawable="@drawable/remote">
 
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
+                    android:textColor="@color/blue"
 
                     />
 
@@ -59,14 +59,15 @@
                 android:id="@+id/pasword"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                app:startIconDrawable="@drawable/padlock"
+                android:hint="@string/passworduser"
                 app:passwordToggleEnabled="true"
-                android:hint="Password">
+                app:startIconDrawable="@drawable/padlock">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textPassword"
-                    android:layout_height="wrap_content" />
+                    android:textColor="@color/blue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +93,7 @@
         android:layout_marginTop="10dp"
         android:elevation="40dp"
         android:scaleType="fitXY"
-        android:src="@drawable/iconuser" />
+        android:src="@drawable/iconuser1" />
 
     <TextView
         android:id="@+id/login_title"

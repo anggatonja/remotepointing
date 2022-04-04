@@ -10,7 +10,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:cardBackgroundColor="@color/teal_700"
+        app:cardBackgroundColor="@color/blue"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +38,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:text="Pointing"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/blue"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -103,64 +103,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
-
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="148dp"
-        app:layout_constraintTop_toBottomOf="@+id/status"
-        tools:layout_editor_absoluteX="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/derajath"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/derajath"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/derajatv" />
-
-                <TextView
-                    android:id="@+id/nilaiderajath"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nilaiderajath"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@+id/derajath"
-                    app:layout_constraintTop_toBottomOf="@+id/derajatv" />
-
-                <TextView
-                    android:id="@+id/nilaiderajatv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nilaiderajatv"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@+id/derajatv"
-                    app:layout_constraintTop_toTopOf="@+id/derajatv" />
-
-                <TextView
-                    android:id="@+id/derajatv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/derajatv"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
                 <ImageView
                     android:id="@+id/button_kanan"
                     android:layout_width="50dp"
@@ -168,7 +110,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginStart="25dp"
-                    android:src="@drawable/kanan"
+                    android:src="@drawable/kananblue"
                     app:layout_constraintBottom_toBottomOf="@+id/button_reset"
                     app:layout_constraintStart_toEndOf="@+id/button_reset"
                     app:layout_constraintTop_toTopOf="@+id/button_reset" />
@@ -180,7 +122,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="25dp"
-                    android:src="@drawable/kiri"
+                    android:src="@drawable/kiriblue"
                     app:layout_constraintBottom_toBottomOf="@+id/button_reset"
                     app:layout_constraintEnd_toStartOf="@+id/button_reset"
                     app:layout_constraintTop_toTopOf="@+id/button_reset" />
@@ -192,7 +134,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="12dp"
-                    android:src="@drawable/atas"
+                    android:src="@drawable/atasblue"
                     app:layout_constraintBottom_toTopOf="@+id/button_reset"
                     app:layout_constraintEnd_toEndOf="@+id/button_reset"
                     app:layout_constraintStart_toStartOf="@+id/button_reset" />
@@ -204,134 +146,263 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="12dp"
-                    android:src="@drawable/bawah"
+                    android:src="@drawable/bawahblue"
                     app:layout_constraintEnd_toEndOf="@+id/button_reset"
                     app:layout_constraintStart_toStartOf="@+id/button_reset"
                     app:layout_constraintTop_toBottomOf="@+id/button_reset" />
 
-                <ImageView
-                    android:id="@+id/button_reset"
-                    android:layout_width="70dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="96dp"
-                    android:src="@drawable/reset"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/derajath" />
+    <ImageView
+        android:id="@+id/button_reset"
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="192dp"
+        android:src="@drawable/resetblue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusbts" />
 
-                <TextView
-                    android:id="@+id/derajathh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/derajathh"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/derajatvv" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardClient"
+        android:layout_width="155dp"
+        android:layout_height="58dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/blue"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusbts">
 
-                <TextView
-                    android:id="@+id/nilaiderajath1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nilaiderajath"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@+id/derajathh"
-                    app:layout_constraintTop_toBottomOf="@+id/derajatvv" />
+        <TextView
+            android:id="@+id/derajath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/derajath"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/derajatv" />
 
-                <TextView
-                    android:id="@+id/nilaiderajatv1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/nilaiderajatv"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toEndOf="@+id/derajatvv"
-                    app:layout_constraintTop_toTopOf="@+id/derajatvv" />
+        <TextView
+            android:id="@+id/nilaiderajath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nilaiderajath"
+            android:textColor="@color/white"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="141dp" />
 
-                <TextView
-                    android:id="@+id/derajatvv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="@string/derajatvv"
-                    android:textColor="@color/lightgrey"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/button_bawah" />
+        <TextView
+            android:id="@+id/dlogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="°"
+            android:textColor="@color/white"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="141dp" />
+
+        <TextView
+            android:id="@+id/derajatv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/derajatv"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nilaiderajatv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nilaiderajatv"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            app:layout_constraintStart_toEndOf="@+id/derajatv"
+            app:layout_constraintTop_toTopOf="@+id/derajatv" />
+
+        <TextView
+            android:id="@+id/dlogo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="°"
+            android:textColor="@color/white"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="20dp"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="141dp" />
+
+        <TextView
+            android:id="@+id/altclient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alclient"
+            android:textColor="@color/white"
+            android:layout_marginTop="36dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="@+id/derajath"
+            app:layout_constraintTop_toBottomOf="@+id/derajath" />
+
+        <TextView
+            android:id="@+id/altvalue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:text="0"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintStart_toEndOf="@id/altclient"
+            app:layout_constraintTop_toBottomOf="@id/derajath"/>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:layout_marginTop="36dp"
+            android:layout_marginLeft="80dp"
+            app:layout_constraintStart_toEndOf="@id/altvalue"
+            app:layout_constraintTop_toBottomOf="@id/derajath" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBts"
+        android:layout_width="155dp"
+        android:layout_height="58dp"
+        android:layout_margin="20dp"
+        app:cardBackgroundColor="@color/lightgrey"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/statusbts">
+
+        <TextView
+            android:id="@+id/derajathh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/derajathh"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/derajatvv" />
+
+        <TextView
+            android:id="@+id/nilaiderajath1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nilaiderajath"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="100dp"
+            app:layout_constraintStart_toEndOf="@+id/derajathh"
+            app:layout_constraintTop_toBottomOf="@+id/derajatvv" />
+
+        <TextView
+            android:id="@+id/dlogo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="°"
+            android:textColor="@color/white"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="141dp" />
+
+        <TextView
+            android:id="@+id/derajatvv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/derajatvv"
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/nilaiderajatv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nilaiderajatv"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="100dp"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/dlogo3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="°"
+            android:textColor="@color/white"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="20dp"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="141dp" />
+
+        <TextView
+            android:id="@+id/altbts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Altitude :"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="36dp"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/derajathh" />
+
+        <TextView
+            android:id="@+id/altvaluebts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="58dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintStart_toEndOf="@id/altclient"
+            app:layout_constraintTop_toBottomOf="@+id/derajathh" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="m"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:layout_marginTop="36dp"
+            android:layout_marginLeft="80dp"
+            app:layout_constraintStart_toEndOf="@+id/altvaluebts"
+            app:layout_constraintTop_toBottomOf="@+id/derajathh" />
+    </androidx.cardview.widget.CardView>
 
 
-                <ImageView
-                    android:id="@+id/button_kanann"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginStart="25dp"
-                    android:src="@drawable/kanan"
-                    app:layout_constraintBottom_toBottomOf="@+id/button_resett"
-                    app:layout_constraintStart_toEndOf="@+id/button_resett"
-                    app:layout_constraintTop_toTopOf="@+id/button_resett" />
 
-                <ImageView
-                    android:id="@+id/button_kirii"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/kiri"
-                    app:layout_constraintBottom_toBottomOf="@+id/button_resett"
-                    app:layout_constraintEnd_toStartOf="@+id/button_resett"
-                    app:layout_constraintTop_toTopOf="@+id/button_resett" />
-
-                <ImageView
-                    android:id="@+id/button_atass"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginBottom="12dp"
-                    android:src="@drawable/atas"
-                    app:layout_constraintBottom_toTopOf="@+id/button_resett"
-                    app:layout_constraintEnd_toEndOf="@+id/button_resett"
-                    app:layout_constraintStart_toStartOf="@+id/button_resett" />
-
-                <ImageView
-                    android:id="@+id/button_bawahh"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/bawah"
-                    app:layout_constraintEnd_toEndOf="@+id/button_resett"
-                    app:layout_constraintStart_toStartOf="@+id/button_resett"
-                    app:layout_constraintTop_toBottomOf="@+id/button_resett" />
-
-                <ImageView
-                    android:id="@+id/button_resett"
-                    android:layout_width="70dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="96dp"
-                    android:src="@drawable/reset"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.498"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/derajathh" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </LinearLayout>
-
-
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

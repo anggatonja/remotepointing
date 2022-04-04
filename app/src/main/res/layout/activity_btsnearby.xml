@@ -10,7 +10,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:cardBackgroundColor="@color/teal_700"
+        app:cardBackgroundColor="@color/blue"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:text="@string/bts_nearby"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/blue"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/pointing"
         app:layout_constraintTop_toTopOf="@+id/pointing" />

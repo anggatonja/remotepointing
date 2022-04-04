@@ -50,7 +50,7 @@ public class Pengaturan extends AppCompatActivity {
             waktuClient = String.valueOf(wClient);
             cekDevices();
             cekDevicesbts();
-            handler.postDelayed(this, 2000);
+            handler.postDelayed(this, 1000);
         }
     };
 
@@ -60,15 +60,17 @@ public class Pengaturan extends AppCompatActivity {
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String detikClient = snapshot.getValue(String.class);
-                Log.i("Detik","Firebase "+detikClient);
-                Log.i("Detik","Detik "+waktuClient);
-                if (detikClient.equals(waktuClient)){
-                    statusDevices.setTextColor(Color.GREEN);
-                    waktuClient = detikClient;
-                }else{
-                    statusDevices.setTextColor(Color.LTGRAY);
-                    waktuClient = detikClient;
+                if (snapshot.exists()){
+                    String detikClient = snapshot.getValue(String.class);
+                    Log.i("Detik","Firebase "+detikClient);
+                    Log.i("Detik","Detik "+waktuClient);
+                    if (detikClient.equals(waktuClient)){
+                        statusDevices.setTextColor(Color.GREEN);
+                        waktuClient = detikClient;
+                    }else{
+                        statusDevices.setTextColor(Color.LTGRAY);
+                        waktuClient = detikClient;
+                    }
                 }
             }
 
@@ -85,16 +87,19 @@ public class Pengaturan extends AppCompatActivity {
         databaseakun.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String detikBts = snapshot.getValue(String.class);
+                if (snapshot.exists()) {
+                    String detikBts = snapshot.getValue(String.class);
 
-                if (detikBts.equals(waktuBts)){
-                    statusDevicess.setTextColor(Color.GREEN);
-                    waktuBts = detikBts;
+                    if (detikBts.equals(waktuBts)){
+                        statusDevicess.setTextColor(Color.GREEN);
+                        waktuBts = detikBts;
+                    }
+                    else{
+                        statusDevicess.setTextColor(Color.LTGRAY);
+                        waktuBts = detikBts;
+                    }
                 }
-                else{
-                    statusDevicess.setTextColor(Color.LTGRAY);
-                    waktuBts = detikBts;
-                }
+
             }
 
             @Override

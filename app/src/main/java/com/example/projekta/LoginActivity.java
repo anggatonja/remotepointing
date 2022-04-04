@@ -35,11 +35,6 @@ public class LoginActivity extends AppCompatActivity {
         TextInputLayout password = (TextInputLayout) findViewById(R.id.pasword);
         Button login = (Button) findViewById(R.id.login);
 
-        if(Preference.getLoggedInStatus(getBaseContext()) == true){
-            Intent intent = new Intent(LoginActivity.this, Pointing.class);
-            startActivity(intent);
-        }
-
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
