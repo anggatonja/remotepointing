@@ -36,6 +36,7 @@ public class Pengaturan extends AppCompatActivity {
     AlertDialog.Builder dialog;
     LayoutInflater inflater;
     View dialogView;
+    View dialogView2;
     private String waktuBts = "1";
     private String waktuClient = "1";
     Integer x = 1;
@@ -134,6 +135,31 @@ public class Pengaturan extends AppCompatActivity {
         dialog.show();
     }
 
+    private void resetJaringan2(){
+        dialog = new AlertDialog.Builder(Pengaturan.this);
+        inflater = getLayoutInflater();
+        dialogView2 = inflater.inflate(R.layout.dialog_reset_bts,null);
+        dialog.setView(dialogView2);
+        dialog.setCancelable(false);
+        dialog.setTitle("Reset SSID BTS");
+
+        dialog.setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mDatabase.child(key).child("resetBTS").setValue("1");
+                startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+            }
+        });
+        dialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,6 +170,7 @@ public class Pengaturan extends AppCompatActivity {
         Pengaturan = findViewById(R.id.pengaturan);
         Button logout = (Button) findViewById(R.id.buttonlogout);
         Button pengaturanwifi = (Button) findViewById(R.id.buttonpengaturan);
+        Button pengaturanwifi2 = (Button) findViewById(R.id.buttonpengaturan2);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         key = "Device/"+Preference.getLoggedInUser(getBaseContext());
         statusDevices = findViewById(R.id.status);
@@ -158,6 +185,12 @@ public class Pengaturan extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 resetJaringan();
+            }
+        });
+        pengaturanwifi2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetJaringan2();
             }
         });
 

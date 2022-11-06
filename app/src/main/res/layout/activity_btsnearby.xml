@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:text="@string/bts_nearby"
+        android:text="BTS Terdekat"
         android:textColor="@color/blue"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/pointing"
